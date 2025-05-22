@@ -8,3 +8,8 @@
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
+
+# yml 파일 & properties 파일
+*.yml
+*.properties
+
