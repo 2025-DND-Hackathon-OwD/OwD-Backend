@@ -36,6 +36,9 @@ out/
 ### VS Code ###
 .vscode/
 
-# yml 파일 & properties 파일
+### yml 파일 & properties 파일 ###
 *.yml
 *.properties
+
+### docker mysql ###
+/docker/data/mysql/mysql
