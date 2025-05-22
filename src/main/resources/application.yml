@@ -1,3 +1,4 @@
+# project setting
 spring:
   application:
     name: owd
