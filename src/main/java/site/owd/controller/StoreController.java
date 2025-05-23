@@ -19,6 +19,7 @@ import site.owd.dto.CommentRequestDto;
 import site.owd.dto.CommentResponseDto;
 import site.owd.dto.PromotionGroupInfoDto;
 import site.owd.dto.SearchStoreDto;
+import site.owd.dto.StoreGroupResponseDto;
 import site.owd.service.StoreService;
 
 @RequiredArgsConstructor
@@ -67,6 +68,17 @@ public class StoreController {
                 @Override public String getCode() { return "STORE_04"; }
                 @Override public String getMessage() { return "제휴 요청에 성공했습니다."; }
             }, result)
+        );
+    }
+
+    @GetMapping("/info")
+    public ResponseEntity<ApiResponse<StoreGroupResponseDto>> getStoreInfoList() {
+        StoreGroupResponseDto response = storeService.getTop3StoreInfo();
+        return ResponseEntity.ok(
+            ApiResponse.success(new SuccessCode() {
+                @Override public String getCode() { return "STORE_05"; }
+                @Override public String getMessage() { return "가게 목록 조회에 성공했습니다."; }
+            }, response)
         );
     }
 }

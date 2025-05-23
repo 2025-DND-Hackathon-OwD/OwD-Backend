@@ -10,6 +10,8 @@ import site.owd.dto.CommentRequestDto;
 import site.owd.dto.CommentResponseDto;
 import site.owd.dto.PromotionGroupInfoDto;
 import site.owd.dto.SearchStoreDto;
+import site.owd.dto.StoreGroupResponseDto;
+import site.owd.dto.StoreInfoDto;
 import site.owd.entity.Comment;
 import site.owd.entity.Member;
 import site.owd.entity.Store;
@@ -69,5 +71,18 @@ public class StoreService {
                 LocalDateTime.now()
             ))
             .collect(Collectors.toList());
+    }
+
+    public StoreGroupResponseDto getTop3StoreInfo() {
+        List<StoreInfoDto> storeList = storeRepository.findAll().stream()
+            .limit(3) // ✅ 상위 3개만 조회
+            .map(store -> new StoreInfoDto(
+                store.getName(),
+                store.getAddress(),
+                store.getImage()
+            ))
+            .collect(Collectors.toList());
+
+        return new StoreGroupResponseDto(storeList);
     }
 }
