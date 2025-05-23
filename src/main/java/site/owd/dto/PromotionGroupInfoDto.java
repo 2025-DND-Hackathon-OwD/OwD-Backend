@@ -11,6 +11,7 @@ public class PromotionGroupInfoDto {
     private String storeName;
     private StoreCategory category;
     private String address;
+    private String image;
     private int promotion_rate;
     private double distance;
 
