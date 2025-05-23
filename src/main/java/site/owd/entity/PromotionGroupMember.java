@@ -24,11 +24,11 @@ public class PromotionGroupMember {
     private Long id;
 
     @JoinColumn(name = "promotion_group_id")
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     private PromotionGroup promotionGroup;
 
     @JoinColumn(name = "store_id")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     private Store store;
 
     public PromotionGroupMember(PromotionGroup promotionGroup, Store store) {

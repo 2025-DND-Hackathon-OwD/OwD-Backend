@@ -2,17 +2,24 @@ package site.owd.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import site.owd.common.exception.CustomException;
+import site.owd.common.exception.StoreExceptionCode;
+import site.owd.dto.CommentRequestDto;
 import site.owd.dto.CreatePromotionGroupDto;
 import site.owd.dto.PromotionGroupDto;
 import site.owd.dto.PromotionGroupInfoDto;
+import site.owd.entity.Comment;
+import site.owd.entity.Member;
 import site.owd.entity.PromotionGroup;
 import site.owd.entity.PromotionGroupMember;
 import site.owd.entity.Store;
+import site.owd.repository.CommentRepository;
 import site.owd.repository.PromotionGroupMemberRepository;
 import site.owd.repository.PromotionGroupRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import site.owd.repository.StoreRepository;
 
 @RequiredArgsConstructor
 @Service
@@ -20,6 +27,7 @@ public class PromotionService {
 
     final PromotionGroupRepository promotionGroupRepository;
     final PromotionGroupMemberRepository promotionGroupMemberRepository;
+    final StoreRepository storeRepository;
 
     public CreatePromotionGroupDto createPromotionGroup() {
         List<PromotionGroup> promotionGroups = promotionGroupRepository.findAll();
