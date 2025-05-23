@@ -3,10 +3,13 @@ package site.owd.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import site.owd.common.response.ApiResponse;
 import site.owd.dto.CreatePromotionGroupDto;
+import site.owd.dto.PromotionGroupInfoDto;
 import site.owd.service.PromotionService;
 
 import static site.owd.controller.PromotionGroupSuccessCode.*;
@@ -24,4 +27,11 @@ public class PromotionController {
         return ResponseEntity.ok(ApiResponse.success(GET_PROMOTION_GROUPS, result));
     }
 
+    @GetMapping("/stores/{storeId}")
+    public ResponseEntity<ApiResponse<PromotionGroupInfoDto>> getStoreInfo(
+        @PathVariable Long storeId
+    ) {
+        PromotionGroupInfoDto result = promotionService.getPromotionGroupInfo(storeId);
+        return ResponseEntity.ok(ApiResponse.success(StoreSuccessCode.STORE_FOUND, result));
+    }
 }
