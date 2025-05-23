@@ -28,6 +28,8 @@ public class PromotionController {
         return ResponseEntity.ok(ApiResponse.success(GET_PROMOTION_GROUPS, result));
     }
 
+
+    @GetMapping("/stores/{storeId}")
     public ResponseEntity<ApiResponse<PromotionGroupInfoDto>> getStoreInfo(
         @PathVariable Long storeId
     ) {

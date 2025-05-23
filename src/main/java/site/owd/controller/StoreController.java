@@ -20,6 +20,7 @@ public class StoreController {
 
     private final StoreService storeService;
 
+
     // 가게 검색
     @PostMapping("/search")
     public ResponseEntity<ApiResponse<List<SearchStoreDto>>> searchStore(
