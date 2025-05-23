@@ -52,8 +52,9 @@ public class PromotionService {
             store.getName(),
             store.getCategory(),
             store.getAddress(),
+            store.getImage(),
             store.getPromotionRate(), // 추후 계산 방식에 따라 수정 가능
-            randomDistance     // 추후 위치 기반 계산 필요
+            randomDistance
         );
     }
 }
