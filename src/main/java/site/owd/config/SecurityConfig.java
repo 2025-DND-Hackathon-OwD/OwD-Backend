@@ -42,9 +42,7 @@ public class SecurityConfig {
             .logout(AbstractHttpConfigurer::disable)
             .sessionManagement(management -> management.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/auth/kakao/callback/**", "/auth/signup", "/api/login")
-                .permitAll()
-                .anyRequest().authenticated()
+                .anyRequest().permitAll()
             )
             .addFilterBefore(tokenAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
             .build();
